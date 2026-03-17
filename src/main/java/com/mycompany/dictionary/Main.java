@@ -16,8 +16,8 @@ public class Main {
         while (true) {
             printMenu();
             int choice = getIntInput(scanner, "Your choice: ");
-            if (choice < 1 || choice > 7) {
-                System.out.println("Invalid choice. Please enter 1-7.");
+            if (choice < 1 || choice > 8) {
+                System.out.println("Invalid choice. Please enter 1-8.");
                 continue;
             }
 
@@ -41,6 +41,9 @@ public class Main {
                     doShowAllWords(dictionary);
                     break;
                 case 7:
+                    doWordCount(dictionary);
+                    break;
+                case 8:
                     doExit(dictionary, fileManager, scanner);
                     return;
             }
@@ -55,7 +58,8 @@ public class Main {
         System.out.println("4. Update word");
         System.out.println("5. Delete word");
         System.out.println("6. Show all words");
-        System.out.println("7. Exit");
+        System.out.println("7. Statistics (total words)");
+        System.out.println("8. Exit");
         System.out.println("=======================================");
     }
 
@@ -174,6 +178,10 @@ public class Main {
         for (Word w : all.values()) {
             System.out.println(w.getWord() + ": " + w.getMeaning());
         }
+    }
+
+    private static void doWordCount(Dictionary dictionary) {
+        System.out.println("Total words saved: " + dictionary.getWordCount());
     }
 
     private static void saveToFile(Dictionary dictionary, FileManager fileManager) {

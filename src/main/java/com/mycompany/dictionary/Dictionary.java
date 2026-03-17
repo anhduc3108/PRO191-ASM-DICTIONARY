@@ -11,6 +11,10 @@ public class Dictionary {
         words = new HashMap<>();
     }
 
+    public int getWordCount() {
+        return words.size();
+    }
+
     public boolean addWord(String word, String meaning) {
         String key = word.trim().toLowerCase();
         if (key.isEmpty()) {
